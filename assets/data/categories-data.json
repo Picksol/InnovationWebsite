@@ -1,0 +1,33 @@
+[
+    {
+      "category": "Clothing",
+      "subcategories": [
+        { "name": "Hoodies", "image": "assets/images/subcategory-clothing-hoodies.jpg" },
+        { "name": "T-Shirts", "image": "assets/images/subcategory-clothing-tshirts.jpg" },
+        { "name": "Jackets", "image": "assets/images/subcategory-clothing-jackets.jpg" },
+        { "name": "Pants", "image": "assets/images/subcategory-clothing-pants.jpg" },
+        { "name": "Shirts", "image": "assets/images/subcategory-clothing-shirts.jpg" },
+        { "name": "Accessories", "image": "assets/images/subcategory-clothing-accessories.jpg" }
+      ]
+    },
+    {
+      "category": "Electronics",
+      "subcategories": [
+        { "name": "Smartphones", "image": "assets/images/subcategory-electronics-smartphones.jpg" },
+        { "name": "Laptops", "image": "assets/images/subcategory-electronics-laptops.jpg" },
+        { "name": "Headphones", "image": "assets/images/subcategory-electronics-headphones.jpg" },
+        { "name": "Smartwatches", "image": "assets/images/subcategory-electronics-smartwatches.jpg" },
+        { "name": "Tablets", "image": "assets/images/subcategory-electronics-tablets.jpg" }
+
+      ]
+    },
+    {
+      "category": "Health Care",
+      "subcategories": [
+        { "name": "Skincare", "image": "assets/images/subcategory-healthcare-skincare.jpg" },
+        { "name": "Vitamins & Supplements", "image": "assets/images/subcategory-healthcare-vitamins.jpg" },
+        { "name": "Personal Care", "image": "assets/images/subcategory-healthcare-personalcare.jpg" },
+        { "name": "Fitness & Wellness", "image": "assets/images/subcategory-healthcare-fitness.jpg" }
+      ]
+    }
+]

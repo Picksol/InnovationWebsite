@@ -4,15 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navIndicator = document.querySelector('.nav-indicator');
 
     function updateNavIndicator(target) {
-        if (!target) return; // Exit if target is null (e.g., on page load before items are rendered)
+        const navIndicator = document.querySelector('.nav-indicator'); // Re-select navIndicator here to ensure it exists
+        if (!navIndicator) return; // Exit if navIndicator element is not found
+    
+        if (!target) return; // Still check if target is null
         const itemRect = target.getBoundingClientRect();
         navIndicator.style.width = `${itemRect.width}px`;
         navIndicator.style.left = `${target.offsetLeft}px`;
-    }
-
-    let activeNavItem = document.querySelector('.nav-item.active'); // Get initially active item
-    if (activeNavItem) {
-        updateNavIndicator(activeNavItem); // Initialize indicator position
     }
 
 

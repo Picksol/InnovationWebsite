@@ -1,0 +1,450 @@
+@import url('main.css'); /* Import main styles to inherit variables and base styles */
+
+/* ==================================================
+    Secondary Navbar
+   ================================================== */
+.secondary-navbar {
+    background-color: var(--secondary-black);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.15); /* Subtle shadow */
+}
+
+.category-nav-container {
+    position: relative; /* For dropdown positioning if needed */
+}
+
+.category-nav-toggle {
+    background-color: transparent;
+    color: var(--text-white);
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-small);
+    transition: background-color 0.3s var(--transition-ease);
+}
+
+.category-nav-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.05); /* Slight hover background */
+}
+
+.nav-chevron {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--text-grey); /* Chevron color */
+    transition: transform 0.3s var(--transition-ease);
+}
+
+.category-nav-toggle:hover .nav-chevron {
+    border-top-color: var(--text-white); /* Chevron color on hover */
+    transform: translateY(2px); /* Slight move on hover */
+}
+
+
+.category-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* Initially hidden - will be toggled with JS or hover */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-medium);
+    z-index: 10;
+    width: 200px; /* Adjust width as needed */
+}
+
+.category-nav-list.active {
+    display: block; /* Show when active class is added */
+}
+
+.category-nav-list li {
+    padding: 0.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separator */
+}
+
+.category-nav-list li:last-child {
+    border-bottom: none; /* Remove separator from last item */
+}
+
+.category-nav-list li a {
+    display: block; /* Make link fill list item */
+    padding: 0.5rem 0; /* Add vertical padding to link text */
+    transition: color 0.3s var(--transition-ease), background-color 0.3s var(--transition-ease);
+    border-radius: var(--border-radius-small); /* Rounded corners for links */
+}
+
+.category-nav-list li a:hover {
+    color: var(--deep-gold);
+    background-color: rgba(255, 215, 0, 0.05); /* Slight gold background on hover */
+}
+
+.subcategory-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 2.5rem;
+    justify-items: center; /* Center grid items */
+    padding-top: 1rem; /* Add some top padding */
+}
+
+/* Individual Sub-category Grid Item */
+.subcategory-grid-item {
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+    text-align: center; /* Center content inside */
+}
+
+.subcategory-grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.subcategory-grid-item img {
+    display: block;
+    width: 100%;
+    height: 220px; /* Fixed height for subcategory images - adjust as needed */
+    object-fit: cover;
+}
+
+.subcategory-grid-item h3 {
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.subcategory-grid-item .shop-category-btn {
+    display: block; /* Full width button */
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Round bottom corners */
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+}
+
+.search-input {
+    background-color: var(--primary-black);
+    color: var(--text-white);
+    border: 2px solid var(--accent-gold);
+    border-right: none; /* Remove right border to join with button */
+    padding: 0.6rem 1rem;
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small); /* Rounded left corners */
+    font-size: 1rem;
+    font-family: inherit; /* Inherit font from body */
+    outline: none; /* Remove default focus outline */
+    transition: border-color 0.3s var(--transition-ease);
+}
+
+.search-input:focus {
+    border-color: var(--deep-gold); /* Gold border on focus */
+}
+
+.search-button {
+    background-color: var(--accent-gold);
+    color: var(--secondary-black);
+    border: 2px solid var(--accent-gold);
+    border-left: none; /* Remove left border to join with input */
+    padding: 0.6rem 1.2rem;
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0; /* Rounded right corners */
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s var(--transition-ease), color 0.3s var(--transition-ease), border-color 0.3s var(--transition-ease);
+}
+
+.search-button:hover {
+    background-color: var(--deep-gold);
+    color: var(--primary-black);
+    border-color: var(--deep-gold);
+}
+
+.choose-category-btn {
+    background-color: var(--accent-gold); /* Different background for category buttons */
+    color: var(--secondary-black);
+    box-shadow: var(--box-shadow-light);
+    margin-bottom: 1rem;
+}
+
+.choose-category-btn:hover {
+    background-color: var(--deep-gold);
+    color: var(--primary-black);
+    box-shadow: var(--box-shadow-medium);
+}
+
+/* ==================================================
+    Store Page Main Layout and Filters Sidebar
+   ================================================== */
+.store-page-main {
+    display: flex;
+    padding: 2rem 5%;
+    gap: 2rem; /* Spacing between sidebar and content */
+}
+
+.filters-sidebar {
+    width: 250px; /* Fixed width for sidebar */
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+    padding: 1.5rem;
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-medium);
+    position: sticky; /* Stick to top on scroll */
+    top: 2rem; /* Offset from top to avoid navbar overlap */
+    height: fit-content; /* Adjust height to content */
+}
+
+.filter-section {
+    margin-bottom: 2rem;
+}
+
+.filter-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+}
+
+.filter-categories,
+.filter-subcategories,
+.sort-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-categories li,
+.filter-subcategories li,
+.sort-options li {
+    margin-bottom: 0.75rem;
+}
+
+.filter-categories li a,
+.filter-subcategories li a,
+.sort-options li a {
+    display: block;
+    color: var(--text-grey);
+    padding: 0.5rem 0;
+    transition: color 0.3s var(--transition-ease), padding-left 0.3s var(--transition-ease);
+    border-radius: var(--border-radius-small); /* Rounded corners for filter links */
+}
+
+.filter-categories li a:hover,
+.filter-subcategories li a:hover,
+.sort-options li a:hover {
+    color: var(--deep-gold);
+    padding-left: 0.5rem; /* Indent on hover for visual feedback */
+}
+
+
+/* Price Range Filter */
+.price-range-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.price-slider {
+    width: 100%;
+}
+
+.price-slider-container {
+    position: relative;
+    margin-bottom: 1rem; /* Add margin below the slider */
+}
+
+/* Common track styles for both Webkit and Firefox */
+.price-slider::-webkit-slider-runnable-track,
+.price-slider::-moz-range-track {
+    background: var(--secondary-black);
+    height: 8px; /* Slightly thicker track */
+    cursor: pointer;
+    border-radius: 4px;
+    border: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); /* Inner shadow for depth */
+}
+
+/* Common thumb styles for both Webkit and Firefox */
+.price-slider::-webkit-slider-thumb,
+.price-slider::-moz-range-thumb {
+    -webkit-appearance: none; /* Required for Chrome */
+    -moz-appearance: none;    /* Required for Firefox */
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--deep-gold);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 2px solid var(--primary-black);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4); /* More prominent thumb shadow */
+    transition: transform 0.2s var(--transition-ease); /* Smooth thumb hover effect */
+}
+
+.price-slider::-webkit-slider-thumb:hover,
+.price-slider::-moz-range-thumb:hover {
+    transform: scale(1.1); /* Slightly larger thumb on hover */
+}
+
+.price-slider:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+.price-slider:focus::-webkit-slider-thumb,
+.price-slider:focus::-moz-range-thumb {
+    box-shadow: 0 0 0 5px rgba(255, 215, 0, 0.5); /* Gold glow on focus */
+}
+
+.price-inputs {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center; /* Vertically align inputs with labels if needed */
+}
+
+.price-inputs label { /* If you want to add labels like "Min:" and "Max:" */
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    margin-right: 0.3rem;
+}
+
+.min-price-input,
+.max-price-input {
+    background-color: var(--primary-black);
+    color: var(--text-white);
+    border: 1px solid var(--text-grey);
+    padding: 0.4rem 0.6rem;
+    border-radius: var(--border-radius-small);
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s var(--transition-ease);
+    text-align: center;
+    width: 45%; /* Slightly reduced width if adding labels */
+}
+
+/* Add focus styles if needed (e.g., for accessibility) */
+
+.min-price-input:focus,
+.max-price-input:focus {
+    border-color: var(--deep-gold);
+}
+
+
+/* ==================================================
+    Category Content Area - Dynamic Content Container
+   ================================================== */
+.category-content-area {
+    flex-grow: 1; /* Take remaining space */
+    padding: 1.5rem;
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-medium);
+    text-align: center; /* Center initial placeholder text */
+}
+
+.category-content-area h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.products-grid, .products-list-view { /* Apply to both classes */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive product grid */
+    gap: 2.5rem;
+    justify-items: center; /* Center product cards in grid */
+    padding-top: 2rem; /* Add some top padding */
+}
+
+.product-card {
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+    padding-bottom: 1rem; /* Add padding at the bottom for button spacing */
+    width: 100%; /* Ensure product card takes full width of its grid cell */
+    max-width: 350px; /* Optional: Set a max width for product cards if needed */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.product-card img {
+    display: block;
+    width: 100%;
+    height: 250px; /* Fixed height for product images - adjust as needed */
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.product-card .product-price {
+    text-align: center;
+    font-weight: 500;
+    color: var(--deep-gold);
+    margin-bottom: 1rem;
+}
+
+.product-card .quantum-btn.small-btn {
+    display: block; /* Make button full width in product card */
+    width: calc(100% - 2rem); /* Full width minus padding on sides */
+    margin: 0 auto; /* Center the button */
+}
+
+/* ==================================================
+    Responsiveness (Basic - we'll refine this later)
+   ================================================== */
+@media (max-width: 992px) { /* Example breakpoint - adjust as needed */
+    .store-page-main {
+        flex-direction: column; /* Stack sidebar and content on smaller screens */
+    }
+
+    .filters-sidebar {
+        width: 100%; /* Full width sidebar on smaller screens */
+        position: static; /* No longer sticky */
+        margin-bottom: 2rem; /* Add margin below sidebar */
+        /* Consider making sidebar collapsible/accordion on mobile later */
+    }
+}
+
+@media (max-width: 768px) { /* Example breakpoint for even smaller screens */
+    .secondary-navbar {
+        flex-direction: column; /* Stack category nav and search on smaller screens */
+        align-items: flex-start; /* Align items to the start */
+        gap: 1rem; /* Spacing between category nav and search */
+    }
+
+    .search-container {
+        width: 100%; /* Full width search container */
+    }
+
+    .search-input,
+    .search-button {
+        border-radius: var(--border-radius-small); /* Full rounded corners when stacked */
+        border: 2px solid var(--accent-gold); /* Add all borders back */
+        border-right: 2px solid var(--accent-gold); /* Ensure all borders are present */
+        border-left: 2px solid var(--accent-gold);
+    }
+}
