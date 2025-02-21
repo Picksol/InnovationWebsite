@@ -1,0 +1,453 @@
+:root {
+    --primary-black: #0a0a0a;
+    --secondary-black: #141414; /* Slightly lighter black for backgrounds */
+    --deep-gold: #ffd700;
+    --accent-gold: #c09933; /* A slightly darker gold for accents */
+    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+    --text-white: #f0f0f0; /* Slightly off-white for text */
+    --text-grey: #a0a0a0; /* Grey for secondary text */
+    --transition-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+    --box-shadow-light: 0 2px 5px rgba(0,0,0,0.1);
+    --box-shadow-medium: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Basic Reset and Body Styles (same as before, but slightly refined) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* For smooth scrolling to sections */
+}
+
+body {
+    background-color: var(--primary-black);
+    color: var(--text-white);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6; /* Improved line height for readability */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 0.75em;
+    letter-spacing: -0.02em;
+}
+
+p {
+    margin-bottom: 1em;
+    color: var(--text-grey); /* Slightly grey text for paragraphs */
+}
+
+a {
+    text-decoration: none;
+    color: inherit; /* Inherit color from parent */
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Buttons - Refined Styles */
+.quantum-btn, .holographic-btn, .shop-category-btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: var(--border-radius-medium);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s var(--transition-ease), box-shadow 0.2s var(--transition-ease);
+    display: inline-flex; /* To center icon and text vertically if needed */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Spacing between icon and text if needed */
+}
+
+.quantum-btn {
+    background-color: var(--deep-gold);
+    color: var(--primary-black);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.quantum-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.quantum-btn.small-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+}
+
+.holographic-btn {
+    background-color: transparent;
+    color: var(--deep-gold);
+    border: 2px solid var(--deep-gold);
+    box-shadow: 0 0 10px var(--accent-gold); /* Holographic effect with accent gold */
+}
+
+.holographic-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px var(--deep-gold), 0 0 30px var(--accent-gold); /* Stronger holographic effect on hover */
+    background-color: rgba(255, 215, 0, 0.1); /* Slight background on hover for better visual feedback */
+}
+
+.holographic-btn.large-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.shop-category-btn {
+    background-color: var(--accent-gold);
+    color: var(--secondary-black);
+    box-shadow: var(--box-shadow-light);
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+}
+
+.shop-category-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--box-shadow-medium);
+}
+
+
+/* Fluid Navbar - Refined Styles */
+.fluid-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Subtle shadow for depth */
+}
+
+.nav-brand {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+
+
+.nav-scroll-container {
+    display: flex;
+    position: relative;
+    gap: 2rem;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.nav-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-item {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s var(--transition-ease);
+    position: relative;
+    white-space: nowrap;
+    padding-bottom: 0.25rem; /* Add some padding below text */
+}
+
+.nav-item:hover {
+    color: var(--text-white); /* Slightly brighter on hover */
+}
+
+.nav-item.active {
+    color: var(--deep-gold);
+}
+
+.nav-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: var(--deep-gold);
+    width: 0; /* Initial width 0, updated by JS */
+    transition: width 0.3s var(--transition-ease), left 0.3s var(--transition-ease);
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+
+/* Hero Section - Refined Styles */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the start */
+    padding: 5% 10%; /* Increased padding for better spacing */
+    text-align: left; /* Ensure text is left-aligned */
+    overflow: hidden; /* To contain parallax effect */
+}
+
+.hero-content {
+    max-width: 800px; /* Limit width of content for readability */
+    margin-bottom: 2rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.title-line {
+    display: block; /* Each line on a new line */
+}
+
+.hero-cta {
+    display: flex;
+    gap: 2rem;
+    position: relative; /* For particle layer positioning */
+}
+
+.particle-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks to pass through */
+    /* You can add particle effects here using CSS or JS later */
+    /* For now, let's leave it empty */
+}
+
+.scroll-prompt {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-grey);
+    animation: bounce 2s infinite; /* Example bounce animation */
+}
+
+.scroll-chevron {
+    width: 20px;
+    height: 20px;
+    border-left: 2px solid var(--text-grey);
+    border-bottom: 2px solid var(--text-grey);
+    transform: rotate(-45deg);
+    margin-top: 0.5rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+
+/* Categories Section */
+.categories-section {
+    padding: 4rem 5%;
+    text-align: center;
+    background-color: var(--secondary-black); /* Slightly darker background */
+}
+
+.categories-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 2rem;
+    justify-items: center; /* Center items in grid cells */
+}
+
+.category-item {
+    background-color: var(--primary-black);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden; /* Clip image to rounded corners */
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.category-item img {
+    display: block; /* Remove bottom spacing from image */
+    width: 100%;
+    height: 200px; /* Fixed height for category images - adjust as needed */
+    object-fit: cover; /* Cover container, crop if needed */
+}
+
+.category-item h3 {
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--text-white);
+}
+
+.category-item .shop-category-btn {
+    display: block; /* Full width button */
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Round bottom corners */
+    text-align: center;
+}
+
+
+/* Featured Products Section */
+.featured-products-section {
+    padding: 4rem 5%;
+    text-align: center;
+}
+
+.featured-products-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive product grid */
+    gap: 2.5rem;
+    justify-items: center; /* Center product cards in grid */
+}
+
+.product-card {
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+    padding-bottom: 1rem; /* Add padding at the bottom for button spacing */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.product-card img {
+    display: block;
+    width: 100%;
+    height: 250px; /* Fixed height for product images - adjust as needed */
+    object-fit: cover;
+}
+
+.product-card h3 {
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.product-card .product-price {
+    text-align: center;
+    font-weight: 500;
+    color: var(--deep-gold);
+    margin-bottom: 1rem;
+}
+
+.product-card .quantum-btn.small-btn {
+    display: block; /* Make button full width in product card */
+    width: calc(100% - 2rem); /* Full width minus padding on sides */
+    margin: 0 auto; /* Center the button */
+}
+
+
+/* Call to Action Section */
+.cta-section {
+    background-color: var(--primary-black);
+    padding: 5rem 5%;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto; /* Center content */
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+
+/* Footer */
+footer {
+    background-color: var(--secondary-black);
+    padding: 2rem 5%;
+    color: var(--text-grey);
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle top border */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-nav a {
+    color: var(--text-grey);
+    transition: color 0.3s var(--transition-ease);
+}
+
+.footer-nav a:hover {
+    color: var(--text-white);
+}
+
+
+/* Parallax Container (for hero section) */
+.parallax-container {
+    perspective: 1000px; /* Depth of field for parallax */
+}
+
+.hero-section.parallax-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/images/hero-background.png'); /* Replace with your hero background image */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Behind content */
+    transform: translateZ(-1px) scale(1.5); /* Parallax effect - adjust scale as needed */
+    background-attachment: fixed; /* Fixed background for parallax */
+}

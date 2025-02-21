@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All - Innovation Retail</title>
+    <meta name="description" content="Explore the full range of innovative products at Innovation Retail. Shop Clothing, Electronics, Health Care, and more.">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> <!-- Replace with your favicon -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css"> <!-- For future animations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Fluid Navbar (reusing from index.html) -->
+        <nav class="fluid-navbar">
+            <div class="nav-brand">
+                <a href="index.html"><span class="gradient-text">Innovation</span> Retail</a>
+            </div>
+            <div class="nav-scroll-container">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="store.html" class="nav-item active">Shop All</a>
+                <a href="about.html" class="nav-item">Our Story</a>
+            </div>
+            <div class="nav-actions">
+                <a href="signup.html" class="holographic-btn">Join Loyalty</a>
+            </div>
+        </nav>
+
+        <!-- Secondary Navbar for Categories and Search -->
+        <nav class="secondary-navbar">
+            <div class="category-nav-container">
+                <button class="category-nav-toggle">Categories <div class="nav-chevron"></div></button> <!-- For potential mobile dropdown -->
+                <ul class="category-nav-list">
+                    <li><a href="store.html?category=clothing">Clothing</a></li>
+                    <li><a href="store.html?category=electronics">Electronics</a></li>
+                    <li><a href="store.html?category=healthcare">Health Care</a></li>
+                    <!-- Add more categories here -->
+                </ul>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search products...">
+                <button class="search-button">Search</button> <!-- Icon can be added here -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="store-page-main">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <div class="filter-section">
+                <h3>Category</h3>
+                <ul class="filter-categories">
+                    <li><a href="store.html?category=clothing">Clothing</a></li>
+                    <li><a href="store.html?category=electronics">Electronics</a></li>
+                    <li><a href="store.html?category=healthcare">Health Care</a></li>
+                    <!-- More categories -->
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <h3>Sub-Category (Clothing)</h3> <!-- Example - Category specific, JS will update this -->
+                <ul class="filter-subcategories">
+                    <li><a href="#">Hoodies</a></li>
+                    <li><a href="#">T-Shirts</a></li>
+                    <li><a href="#">Jackets</a></li>
+                    <!-- More Clothing sub-categories -->
+                </ul>
+            </div>
+
+            <div class="filter-section">
+                <h3>Price Range</h3>
+                <div class="price-range-filter">
+                    <input type="range" class="price-slider" min="0" max="1000" value="0"> <!-- Example range -->
+                    <div class="price-inputs">
+                        <input type="number" class="min-price-input" placeholder="Min">
+                        <input type="number" class="max-price-input" placeholder="Max">
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3>Sort By</h3>
+                <ul class="sort-options">
+                    <li><a href="#">Popularity</a></li>
+                    <li><a href="#">Price (Low to High)</a></li>
+                    <li><a href="#">Price (High to Low)</a></li>
+                    <li><a href="#">New Arrivals</a></li>
+                </ul>
+            </div>
+
+            <!-- More filters can be added here, e.g., Size, Color, etc. -->
+        </aside>
+
+        <!-- Product Listing -->
+        <section class="product-listing">
+            <div class="subcategory-grid">
+                <h2>Shop by Sub-Category</h2> <!-- Initial Grid View -->
+                <div class="category-grid"> <!-- Reusing category grid styles -->
+                    <div class="category-item">
+                        <img src="assets/images/subcategory-clothing-hoodies.jpg" alt="Hoodies"> <!-- Placeholder -->
+                        <h3>Hoodies</h3>
+                        <a href="#" class="shop-category-btn">Shop Now</a>
+                    </div>
+                    <div class="category-item">
+                        <img src="assets/images/subcategory-clothing-tshirts.jpg" alt="T-Shirts"> <!-- Placeholder -->
+                        <h3>T-Shirts</h3>
+                        <a href="#" class="shop-category-btn">Shop Now</a>
+                    </div>
+                    <div class="category-item">
+                        <img src="assets/images/subcategory-clothing-jackets.jpg" alt="Jackets"> <!-- Placeholder -->
+                        <h3>Jackets</h3>
+                        <a href="#" class="shop-category-btn">Shop Now</a>
+                    </div>
+                    <!-- More sub-categories for Clothing -->
+                </div>
+            </div>
+
+            <div class="product-grid products-list-view"> <!-- Class for list view styling, initially hidden or less prominent -->
+                <h2>Products</h2> <!-- Product List View - initially below or replacing subcategory grid -->
+                <div class="product-card">
+                    <img src="assets/images/product-placeholder.jpg" alt="Product 1"> <!-- Placeholder -->
+                    <h3>Product Title 1</h3>
+                    <p class="product-price">$XX.XX</p>
+                    <button class="quantum-btn small-btn">View Product</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/product-placeholder.jpg" alt="Product 2"> <!-- Placeholder -->
+                    <h3>Product Title 2</h3>
+                    <p class="product-price">$YY.YY</p>
+                    <button class="quantum-btn small-btn">View Product</button>
+                </div>
+                <!-- More product cards -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Innovation Retail. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="about.html">About Us</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/store.js"></script> <!-- Separate JS for store page functionality -->
+</body>
+</html>

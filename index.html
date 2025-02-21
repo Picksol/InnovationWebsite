@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Retail - Future of Shopping</title>
+    <meta name="description" content="Innovation Retail: Experience the future of shopping. Explore cutting-edge products in Clothing, Electronics, Health Care, and more.">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon"> <!-- Replace with your favicon -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css"> <!-- Make sure this file exists, we'll add to it later -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Fluid Navbar -->
+        <nav class="fluid-navbar">
+            <div class="nav-brand">
+                <span class="gradient-text">Innovation</span> Retail
+            </div>
+            <div class="nav-scroll-container">
+                <a href="index.html" class="nav-item active" data-section="hero">Home</a>
+                <a href="store.html" class="nav-item">Shop All</a>
+                <!-- Removed trending link for now -->
+                <a href="about.html" class="nav-item">Our Story</a>
+            </div>
+            <div class="nav-actions">
+                <a href="signup.html" class="holographic-btn">Join Loyalty</a> <!-- Link to Sign Up Page -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section parallax-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Redefining</span>
+                    <span class="title-line">Retail Experience</span>
+                </h1>
+                <div class="hero-cta">
+                    <button class="quantum-btn">Explore Now</button>
+                    <div class="particle-layer"></div>
+                </div>
+            </div>
+            <div class="scroll-prompt">
+                <div class="scroll-chevron"></div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="categories-section">
+            <h2>Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-item">
+                    <img src="assets/images/clothing-category.png" alt="Clothing"> <!-- Replace with your image -->
+                    <h3>Clothing</h3>
+                    <a href="store.html?category=clothing" class="shop-category-btn">Shop Now</a>
+                </div>
+                <div class="category-item">
+                    <img src="assets/images/electronics-category.png" alt="Electronics"> <!-- Replace with your image -->
+                    <h3>Electronics</h3>
+                    <a href="store.html?category=electronics" class="shop-category-btn">Shop Now</a>
+                </div>
+                <div class="category-item">
+                    <img src="assets/images/healthcare-category.png" alt="Health Care"> <!-- Replace with your image -->
+                    <h3>Health Care</h3>
+                    <a href="store.html?category=healthcare" class="shop-category-btn">Shop Now</a>
+                </div>
+                <!-- Add more categories as needed -->
+            </div>
+        </section>
+
+        <!-- Featured Products Section (Example - you can expand on this) -->
+        <section id="featured-products" class="products-grid featured-products-section">
+            <h2>Featured Innovations</h2>
+            <!-- Dynamic featured product content will be loaded via JS later -->
+            <div class="product-card">
+                <img src="assets/images/product-placeholder.png" alt="Product 1"> <!-- Placeholder image -->
+                <h3>Product Title 1</h3>
+                <p class="product-price">$XX.XX</p>
+                <button class="quantum-btn small-btn">View Product</button>
+            </div>
+            <div class="product-card">
+                <img src="assets/images/product-placeholder.png" alt="Product 2"> <!-- Placeholder image -->
+                <h3>Product Title 2</h3>
+                <p class="product-price">$YY.YY</p>
+                <button class="quantum-btn small-btn">View Product</button>
+            </div>
+            <!-- Add more featured products -->
+        </section>
+
+        <!-- Call to Action Section (Optional - Example) -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to experience the future of retail?</h2>
+                <p>Join our community and stay ahead of the curve with exclusive offers and early access to new innovations.</p>
+                <button class="holographic-btn large-btn">Sign Up for Updates</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Innovation Retail. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="about.html">About Us</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
