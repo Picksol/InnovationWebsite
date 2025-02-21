@@ -347,7 +347,7 @@
 /* ==================================================
     Category Content Area - Dynamic Content Container
    ================================================== */
-.category-content-area {
+   .category-content-area {
     flex-grow: 1; /* Take remaining space */
     padding: 1.5rem;
     background-color: var(--secondary-black);
@@ -361,12 +361,82 @@
     margin-bottom: 1rem;
 }
 
-.products-grid, .products-list-view { /* Apply to both classes */
+/* ==================================================
+    Category Grid Layout (for Main Categories and Subcategories)
+   ================================================== */
+   .category-grid-container { /* Container for BOTH main categories and subcategories grids */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive product grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid, min width 280px */
     gap: 2.5rem;
-    justify-items: center; /* Center product cards in grid */
-    padding-top: 2rem; /* Add some top padding */
+    justify-items: center; /* Center grid items */
+    padding-top: 1rem;
+}
+
+/* For Main Categories Grid specifically - force 3 columns on larger screens */
+.category-content-area > h2 + .category-grid-container { /* Target .category-grid-container directly after h2 in .category-content-area */
+    grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
+}
+
+/* Individual Category Grid Item (for both main and subcategories) */
+.category-grid-item {
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+    text-align: center;
+}
+
+.category-grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.category-grid-item img {
+    display: block;
+    width: 100%;
+    height: 220px; /* Fixed height for category images - adjust as needed */
+    object-fit: cover;
+}
+
+.category-grid-item h3 {
+    padding: 1rem;
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+}
+
+.category-grid-item .shop-category-btn {
+    display: block; /* Full width button */
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Round bottom corners */
+    text-align: center;
+}
+
+/* ==================================================
+    Product Listing Area and Product Grid (List View)
+   ================================================== */
+.product-listing-area {
+    display: block !important; /* Ensure it's visible when shown */
+    padding: 1.5rem;
+    background-color: var(--secondary-black);
+    border-radius: var(--border-radius-medium);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.product-listing-area h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.product-grid.products-list-view { /* Explicitly target product list grid */
+    display: grid; /* Make sure it's grid layout */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    justify-items: stretch; /* Stretch product cards to fill grid cell width */ /* Changed from center to stretch */
+    padding-top: 2rem;
 }
 
 .product-card {
@@ -375,9 +445,11 @@
     overflow: hidden;
     box-shadow: var(--box-shadow-medium);
     transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
-    padding-bottom: 1rem; /* Add padding at the bottom for button spacing */
-    width: 100%; /* Ensure product card takes full width of its grid cell */
-    max-width: 350px; /* Optional: Set a max width for product cards if needed */
+    padding-bottom: 1rem;
+    width: 100%; /* Take full width of grid cell */
+    /* max-width: 350px;  Optional max-width - removed for full stretch within grid cell */
+    display: flex; /* Use flexbox for internal layout of product card */ /* Added flexbox */
+    flex-direction: column; /* Stack image, text, button vertically in card */ /* Added flex-direction */
 }
 
 .product-card:hover {
@@ -388,7 +460,7 @@
 .product-card img {
     display: block;
     width: 100%;
-    height: 250px; /* Fixed height for product images - adjust as needed */
+    height: 250px;
     object-fit: cover;
 }
 
@@ -398,6 +470,10 @@
     text-align: center;
     color: var(--text-white);
     margin-bottom: 0.5rem;
+    flex-grow: 1; /* Allow product name to take available vertical space */ /* Added flex-grow */
+    display: flex; /* Center text vertically within its area */ /* Added flex display and alignment */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally (already centered by text-align: center, but for consistency) */
 }
 
 .product-card .product-price {
@@ -408,9 +484,9 @@
 }
 
 .product-card .quantum-btn.small-btn {
-    display: block; /* Make button full width in product card */
-    width: calc(100% - 2rem); /* Full width minus padding on sides */
-    margin: 0 auto; /* Center the button */
+    display: block;
+    width: calc(100% - 2rem);
+    margin: 0 auto;
 }
 
 /* ==================================================
