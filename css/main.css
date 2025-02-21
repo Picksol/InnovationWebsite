@@ -1,7 +1,7 @@
 :root {
     --primary-black: #0a0a0a;
     --secondary-black: #141414; /* Slightly lighter black for backgrounds */
-    --deep-gold: #ffd700;
+    --deep-gold: #e4b005;
     --accent-gold: #c09933; /* A slightly darker gold for accents */
     --gradient-gold: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
     --text-white: #f0f0f0; /* Slightly off-white for text */
@@ -227,8 +227,6 @@ a {
     width: 100%;
     height: 100%;
     pointer-events: none; /* Allow clicks to pass through */
-    /* You can add particle effects here using CSS or JS later */
-    /* For now, let's leave it empty */
 }
 
 .scroll-prompt {
