@@ -1,455 +1,159 @@
-@import url('main.css'); /* Import main styles to inherit variables and base styles */
+/* store.css - Updated Product Card Styles for Mockup 2A */
 
 /* ==================================================
-    Secondary Navbar
+    Spatial Hub Styles
    ================================================== */
-.secondary-navbar {
+   .spatial-hub-page .store-page-main { /* Target main on store page with spatial-hub-page class */
+    padding: 4rem 5%; /* Adjust main padding for hub page */
+}
+
+.spatial-hub-container {
+    text-align: center;
+    padding: 3rem 0; /* Padding within the container */
+}
+
+.spatial-hub-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hub-description {
+    color: var(--text-grey);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.hub-nodes-container {
+    display: flex; /* Use flexbox for dynamic 2D layout */
+    flex-wrap: wrap; /* Allow nodes to wrap to the next line on smaller screens */
+    justify-content: center; /* Center nodes horizontally */
+    gap: 3rem; /* Spacing between nodes */
+    padding: 2rem; /* Add padding around the nodes container */
+}
+
+.hub-node {
     background-color: var(--secondary-black);
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.15); /* Subtle shadow */
+    border-radius: var(--border-radius-medium);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+    width: 280px; /* Adjust node width as needed */
+    cursor: pointer; /* Indicate interactivity */
+    position: relative; /* For overlay positioning */
 }
 
-.category-nav-container {
-    position: relative; /* For dropdown positioning if needed */
+.hub-node:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* Stronger shadow on hover */
 }
 
-.category-nav-toggle {
-    background-color: transparent;
-    color: var(--text-white);
-    border: none;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius-small);
-    transition: background-color 0.3s var(--transition-ease);
+.node-visual {
+    position: relative; /* For overlay positioning */
 }
 
-.category-nav-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.05); /* Slight hover background */
+.node-visual img {
+    display: block;
+    width: 100%;
+    height: 220px; /* Adjust image height for nodes */
+    object-fit: cover;
 }
 
-.nav-chevron {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid var(--text-grey); /* Chevron color */
-    transition: transform 0.3s var(--transition-ease);
-}
-
-.category-nav-toggle:hover .nav-chevron {
-    border-top-color: var(--text-white); /* Chevron color on hover */
-    transform: translateY(2px); /* Slight move on hover */
-}
-
-
-.category-nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: none; /* Initially hidden - will be toggled with JS or hover */
+.node-overlay {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
-    background-color: var(--secondary-black);
-    border-radius: var(--border-radius-medium);
-    box-shadow: var(--box-shadow-medium);
-    z-index: 10;
-    width: 200px; /* Adjust width as needed */
-}
-
-.category-nav-list.active {
-    display: block; /* Show when active class is added */
-}
-
-.category-nav-list li {
-    padding: 0.5rem 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Separator */
-}
-
-.category-nav-list li:last-child {
-    border-bottom: none; /* Remove separator from last item */
-}
-
-.category-nav-list li a {
-    display: block; /* Make link fill list item */
-    padding: 0.5rem 0; /* Add vertical padding to link text */
-    transition: color 0.3s var(--transition-ease), background-color 0.3s var(--transition-ease);
-    border-radius: var(--border-radius-small); /* Rounded corners for links */
-}
-
-.category-nav-list li a:hover {
-    color: var(--deep-gold);
-    background-color: rgba(255, 215, 0, 0.05); /* Slight gold background on hover */
-}
-
-.subcategory-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-    gap: 2.5rem;
-    justify-items: center; /* Center grid items */
-    padding-top: 1rem; /* Add some top padding */
-}
-
-/* Individual Sub-category Grid Item */
-.subcategory-grid-item {
-    background-color: var(--secondary-black);
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-    box-shadow: var(--box-shadow-medium);
-    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
-    text-align: center; /* Center content inside */
-}
-
-.subcategory-grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.subcategory-grid-item img {
-    display: block;
     width: 100%;
-    height: 220px; /* Fixed height for subcategory images - adjust as needed */
-    object-fit: cover;
+    height: 100%;
+    background-color: rgba(255, 215, 0, 0.2); /* Gold overlay */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s var(--transition-ease);
 }
 
-.subcategory-grid-item h3 {
-    padding: 1rem;
-    font-size: 1.1rem;
-    color: var(--text-white);
-    margin-bottom: 0.5rem;
+.hub-node:hover .node-overlay {
+    opacity: 1; /* Show overlay on hover */
 }
 
-.subcategory-grid-item .shop-category-btn {
-    display: block; /* Full width button */
-    width: 100%;
-    padding: 1rem;
-    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Round bottom corners */
+.node-title {
+    padding: 1.5rem;
+    font-size: 1.3rem;
     text-align: center;
-}
-
-.search-container {
-    display: flex;
-}
-
-.search-input {
-    background-color: var(--primary-black);
     color: var(--text-white);
-    border: 2px solid var(--accent-gold);
-    border-right: none; /* Remove right border to join with button */
-    padding: 0.6rem 1rem;
-    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small); /* Rounded left corners */
-    font-size: 1rem;
-    font-family: inherit; /* Inherit font from body */
-    outline: none; /* Remove default focus outline */
-    transition: border-color 0.3s var(--transition-ease);
-}
-
-.search-input:focus {
-    border-color: var(--deep-gold); /* Gold border on focus */
-}
-
-.search-button {
-    background-color: var(--accent-gold);
-    color: var(--secondary-black);
-    border: 2px solid var(--accent-gold);
-    border-left: none; /* Remove left border to join with input */
-    padding: 0.6rem 1.2rem;
-    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0; /* Rounded right corners */
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s var(--transition-ease), color 0.3s var(--transition-ease), border-color 0.3s var(--transition-ease);
-}
-
-.search-button:hover {
-    background-color: var(--deep-gold);
-    color: var(--primary-black);
-    border-color: var(--deep-gold);
-}
-
-.choose-category-btn {
-    background-color: var(--accent-gold); /* Different background for category buttons */
-    color: var(--secondary-black);
-    box-shadow: var(--box-shadow-light);
-    margin-bottom: 1rem;
-}
-
-.choose-category-btn:hover {
-    background-color: var(--deep-gold);
-    color: var(--primary-black);
-    box-shadow: var(--box-shadow-medium);
+    margin-bottom: 0; /* Remove default margin */
 }
 
 /* ==================================================
-    Store Page Main Layout and Filters Sidebar
+    3D Spatial Hub Styles (Responsive)
    ================================================== */
-.store-page-main {
-    display: flex;
-    padding: 2rem 5%;
-    gap: 2rem; /* Spacing between sidebar and content */
-}
-
-.filters-sidebar {
-    width: 250px; /* Fixed width for sidebar */
-    flex-shrink: 0; /* Prevent sidebar from shrinking */
-    padding: 1.5rem;
-    background-color: var(--secondary-black);
-    border-radius: var(--border-radius-medium);
-    box-shadow: var(--box-shadow-medium);
-    position: sticky; /* Stick to top on scroll */
-    top: 2rem; /* Offset from top to avoid navbar overlap */
-    height: fit-content; /* Adjust height to content */
-}
-
-.filter-section {
-    margin-bottom: 2rem;
-}
-
-.filter-section h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    color: var(--text-white);
-}
-
-.filter-categories,
-.filter-subcategories,
-.sort-options {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.filter-categories li,
-.filter-subcategories li,
-.sort-options li {
-    margin-bottom: 0.75rem;
-}
-
-.filter-categories li a,
-.filter-subcategories li a,
-.sort-options li a {
-    display: block;
-    color: var(--text-grey);
-    padding: 0.5rem 0;
-    transition: color 0.3s var(--transition-ease), padding-left 0.3s var(--transition-ease);
-    border-radius: var(--border-radius-small); /* Rounded corners for filter links */
-}
-
-.filter-categories li a:hover,
-.filter-subcategories li a:hover,
-.sort-options li a:hover {
-    color: var(--deep-gold);
-    padding-left: 0.5rem; /* Indent on hover for visual feedback */
-}
-
-
-/* Price Range Filter */
-.price-range-filter {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-.price-slider {
-    width: 100%;
-}
-
-.price-slider-container {
+   #hub-3d-canvas-container {
+    width: 100%; /* Take full width of parent */
+    height: 600px; /* Default height for larger screens */
+    max-height: 80vh; /* Limit height to 80% of viewport height on larger screens if needed */
+    overflow: hidden;
     position: relative;
-    margin-bottom: 1rem; /* Add margin below the slider */
+    margin-bottom: 2rem; /* Add some margin below the canvas */
 }
 
-/* Common track styles for both Webkit and Firefox */
-.price-slider::-webkit-slider-runnable-track,
-.price-slider::-moz-range-track {
-    background: var(--secondary-black);
-    height: 8px; /* Slightly thicker track */
-    cursor: pointer;
-    border-radius: 4px;
-    border: none;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3); /* Inner shadow for depth */
-}
-
-/* Common thumb styles for both Webkit and Firefox */
-.price-slider::-webkit-slider-thumb,
-.price-slider::-moz-range-thumb {
-    -webkit-appearance: none; /* Required for Chrome */
-    -moz-appearance: none;    /* Required for Firefox */
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: var(--deep-gold);
-    cursor: pointer;
-    border-radius: 50%;
-    border: 2px solid var(--primary-black);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4); /* More prominent thumb shadow */
-    transition: transform 0.2s var(--transition-ease); /* Smooth thumb hover effect */
-}
-
-.price-slider::-webkit-slider-thumb:hover,
-.price-slider::-moz-range-thumb:hover {
-    transform: scale(1.1); /* Slightly larger thumb on hover */
-}
-
-.price-slider:focus {
-    outline: none; /* Remove default focus outline */
-}
-
-.price-slider:focus::-webkit-slider-thumb,
-.price-slider:focus::-moz-range-thumb {
-    box-shadow: 0 0 0 5px rgba(255, 215, 0, 0.5); /* Gold glow on focus */
-}
-
-.price-inputs {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: space-between;
-    align-items: center; /* Vertically align inputs with labels if needed */
-}
-
-.price-inputs label { /* If you want to add labels like "Min:" and "Max:" */
-    color: var(--text-grey);
-    font-size: 0.9rem;
-    margin-right: 0.3rem;
-}
-
-.min-price-input,
-.max-price-input {
-    background-color: var(--primary-black);
-    color: var(--text-white);
-    border: 1px solid var(--text-grey);
-    padding: 0.4rem 0.6rem;
-    border-radius: var(--border-radius-small);
-    font-size: 0.9rem;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.3s var(--transition-ease);
-    text-align: center;
-    width: 45%; /* Slightly reduced width if adding labels */
-}
-
-/* Add focus styles if needed (e.g., for accessibility) */
-
-.min-price-input:focus,
-.max-price-input:focus {
-    border-color: var(--deep-gold);
-}
-
-
-/* ==================================================
-    Category Content Area - Dynamic Content Container
-   ================================================== */
-   .category-content-area {
-    flex-grow: 1; /* Take remaining space */
-    padding: 1.5rem;
-    background-color: var(--secondary-black);
-    border-radius: var(--border-radius-medium);
-    box-shadow: var(--box-shadow-medium);
-    text-align: center; /* Center initial placeholder text */
-}
-
-.category-content-area h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-/* ==================================================
-    Category Grid Layout (for Main Categories and Subcategories)
-   ================================================== */
-   .category-grid-container { /* Container for BOTH main categories and subcategories grids */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid, min width 280px */
-    gap: 2.5rem;
-    justify-items: center; /* Center grid items */
-    padding-top: 1rem;
-}
-
-/* For Main Categories Grid specifically - force 3 columns on larger screens */
-.category-content-area > h2 + .category-grid-container { /* Target .category-grid-container directly after h2 in .category-content-area */
-    grid-template-columns: repeat(3, 1fr); /* Force 3 equal columns */
-}
-
-/* Individual Category Grid Item (for both main and subcategories) */
-.category-grid-item {
-    background-color: var(--secondary-black);
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-    box-shadow: var(--box-shadow-medium);
-    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
-    text-align: center;
-}
-
-.category-grid-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
-
-.category-grid-item img {
+#hub-3d-canvas {
     display: block;
     width: 100%;
-    height: 220px; /* Fixed height for category images - adjust as needed */
-    object-fit: cover;
+    height: 100%;
 }
 
-.category-grid-item h3 {
-    padding: 1rem;
-    font-size: 1.1rem;
-    color: var(--text-white);
-    margin-bottom: 0.5rem;
-}
 
-.category-grid-item .shop-category-btn {
-    display: block; /* Full width button */
-    width: 100%;
-    padding: 1rem;
-    border-radius: 0 0 var(--border-radius-medium) var(--border-radius-medium); /* Round bottom corners */
-    text-align: center;
+/* --- Media Query for smaller screens (e.g., tablets and phones) --- */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+    #hub-3d-canvas-container {
+        height: 400px; /* Reduced height on smaller screens */
+        max-height: 90vh; /* Allow to take more viewport height on smaller screens if needed */
+    }
 }
 
 /* ==================================================
-    Product Listing Area and Product Grid (List View)
+    Product Listing Area and Product Grid (List View) - UPDATED Product Cards for Mockup 2A
    ================================================== */
-.product-listing-area {
-    display: block !important; /* Ensure it's visible when shown */
-    padding: 1.5rem;
+   .product-listing-area {
+    display: block !important;
+    padding: 2rem 5%; /* Increased padding for product listing area */
     background-color: var(--secondary-black);
     border-radius: var(--border-radius-medium);
     box-shadow: var(--box-shadow-medium);
 }
+
+.product-listing-area .product-listing-header {
+    display: flex;
+    justify-content: space-between; /* Space out back button and heading */
+    align-items: center;
+    margin-bottom: 2rem; /* Spacing below header */
+}
+
 
 .product-listing-area h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    text-align: center;
+    font-size: 2rem; /* Slightly larger heading */
+    text-align: left; /* Align heading to the left */
+    margin-bottom: 0; /* Remove default bottom margin from heading */
 }
 
-.product-grid.products-list-view { /* Explicitly target product list grid */
-    display: grid; /* Make sure it's grid layout */
-    grid-template-columns: repeat(3, 1fr);
+.product-grid.products-list-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider min width for cards */
     gap: 2.5rem;
-    justify-items: stretch; /* Stretch product cards to fill grid cell width */ /* Changed from center to stretch */
-    padding-top: 2rem;
+    justify-items: stretch;
+    padding-top: 0; /* Removed top padding from grid, header provides spacing */
 }
 
 .product-card {
-    background-color: var(--secondary-black);
+    background-color: var(--primary-black);
     border-radius: var(--border-radius-medium);
     overflow: hidden;
     box-shadow: var(--box-shadow-medium);
     transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
-    padding-bottom: 1rem;
-    width: 100%; /* Take full width of grid cell */
-    /* max-width: 350px;  Optional max-width - removed for full stretch within grid cell */
-    display: flex; /* Use flexbox for internal layout of product card */ /* Added flexbox */
-    flex-direction: column; /* Stack image, text, button vertically in card */ /* Added flex-direction */
+    padding-bottom: 0; /* Removed bottom padding from card */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative; /* For absolute positioning of overlay and info panel */
+    cursor: pointer; /* Indicate interactive nature */
+    overflow: hidden; /* Clip inner content to rounded corners */
 }
 
 .product-card:hover {
@@ -457,70 +161,143 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
+/* --- Product Card Image --- */
+.product-card-image-container {
+    position: relative; /* For overlay positioning */
+}
+
 .product-card img {
     display: block;
     width: 100%;
-    height: 250px;
+    height: 280px; /* Increased image height */
     object-fit: cover;
+    transition: opacity 0.3s var(--transition-ease); /* Opacity transition for potential effects */
+}
+
+.product-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 215, 0, 0.1); /* Gold overlay color */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s var(--transition-ease);
+    pointer-events: none; /* Allow clicks to pass through */
+}
+
+.product-card:hover .product-card-overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+
+/* --- Product Card Title --- */
+.product-card-title-strip {
+    background-color: var(--secondary-black);
+    padding: 0.8rem 1rem;
+    text-align: center;
 }
 
 .product-card h3 {
-    padding: 1rem;
     font-size: 1.1rem;
-    text-align: center;
     color: var(--text-white);
-    margin-bottom: 0.5rem;
-    flex-grow: 1; /* Allow product name to take available vertical space */ /* Added flex-grow */
-    display: flex; /* Center text vertically within its area */ /* Added flex display and alignment */
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally (already centered by text-align: center, but for consistency) */
+    margin-bottom: 0; /* Removed default margin */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Ellipsis for overflow text */
 }
+
+
+/* --- Product Card Info Panel (Hidden by Default) --- */
+.product-card-info-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--secondary-black);
+    padding: 1.5rem;
+    transform: translateY(100%); /* Initially slide panel out of view */
+    transition: transform 0.3s var(--transition-ease), opacity 0.3s var(--transition-ease);
+    opacity: 0; /* Initially hidden */
+    pointer-events: none; /* Ensure panel doesn't interfere with hover on card */
+}
+
+.product-card:hover .product-card-info-panel {
+    transform: translateY(0); /* Slide panel into view on hover */
+    opacity: 1; /* Show panel on hover */
+    pointer-events: auto; /* Make panel interactive on hover */
+}
+
+
+.product-card .product-description {
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(10px); /* Slight initial offset */
+    transition: opacity 0.3s 0.1s var(--transition-ease), transform 0.3s 0.1s var(--transition-ease); /* Delayed animation */
+}
+
+.product-card:hover .product-description {
+    opacity: 1; /* Fade in description on hover */
+    transform: translateY(0); /* Slide description into view on hover */
+}
+
 
 .product-card .product-price {
-    text-align: center;
     font-weight: 500;
     color: var(--deep-gold);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem; /* Slightly larger price */
+    text-align: left; /* Align price to the left within info panel */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(10px); /* Slight initial offset */
+    transition: opacity 0.3s 0.2s var(--transition-ease), transform 0.3s 0.2s var(--transition-ease); /* Further delayed animation */
 }
+
+.product-card:hover .product-price {
+    opacity: 1; /* Fade in price on hover */
+    transform: translateY(0); /* Slide price into view on hover */
+}
+
 
 .product-card .quantum-btn.small-btn {
-    display: block;
-    width: calc(100% - 2rem);
-    margin: 0 auto;
+    display: inline-block; /* Make button inline-block within info panel */
+    width: auto; /* Auto width to fit content */
+    padding: 0.6rem 1.5rem; /* Adjusted button padding */
+    margin: 0; /* Reset margins */
+    opacity: 0; /* Initially hidden */
+    transform: translateY(10px); /* Slight initial offset */
+    transition: opacity 0.3s 0.3s var(--transition-ease), transform 0.3s 0.3s var(--transition-ease); /* Even further delayed animation */
 }
 
-/* ==================================================
-    Responsiveness (Basic - we'll refine this later)
-   ================================================== */
-@media (max-width: 992px) { /* Example breakpoint - adjust as needed */
-    .store-page-main {
-        flex-direction: column; /* Stack sidebar and content on smaller screens */
-    }
-
-    .filters-sidebar {
-        width: 100%; /* Full width sidebar on smaller screens */
-        position: static; /* No longer sticky */
-        margin-bottom: 2rem; /* Add margin below sidebar */
-        /* Consider making sidebar collapsible/accordion on mobile later */
-    }
+.product-card:hover .quantum-btn.small-btn {
+    opacity: 1; /* Fade in button on hover */
+    transform: translateY(0); /* Slide button into view on hover */
 }
 
-@media (max-width: 768px) { /* Example breakpoint for even smaller screens */
-    .secondary-navbar {
-        flex-direction: column; /* Stack category nav and search on smaller screens */
-        align-items: flex-start; /* Align items to the start */
-        gap: 1rem; /* Spacing between category nav and search */
-    }
+/* (Placeholder for Data Visualization Overlay - we'll refine this later) */
+.product-card-data-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 215, 0, 0.2); /* Example gold-tinted background */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s var(--transition-ease);
+    pointer-events: none;
+    /* Add more sophisticated data visualization styles here later */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--deep-gold);
+    font-weight: 500;
+}
 
-    .search-container {
-        width: 100%; /* Full width search container */
-    }
-
-    .search-input,
-    .search-button {
-        border-radius: var(--border-radius-small); /* Full rounded corners when stacked */
-        border: 2px solid var(--accent-gold); /* Add all borders back */
-        border-right: 2px solid var(--accent-gold); /* Ensure all borders are present */
-        border-left: 2px solid var(--accent-gold);
-    }
+.product-card:hover .product-card-data-overlay {
+    opacity: 1; /* Show data overlay on hover */
 }

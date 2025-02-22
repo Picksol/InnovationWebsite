@@ -13,18 +13,18 @@
       "colors": ["Black", "Space Grey", "Deep Gold"]
     },
     {
-        "id": "clothing-hoodie-002",
-        "name": "Innovation Tech Sweatshirt",
-        "description": "Stay warm and stylish with our futuristic tech hoodie. Perfect for innovators on the go.",
-        "price": 44.99,
-        "images": ["assets/images/clothing-hoodie-01.png", "assets/images/clothing-hoodie-02.png"],
-        "category": "Clothing",
-        "subcategory": "Hoodies",
-        "popularity": 3.9,
-        "brand": "Innovation Retail Apparel",
-        "sizes": ["S", "M", "L", "XL", "XXL"],
-        "colors": ["Black", "Space Grey", "Deep Gold"]
-      },
+      "id": "clothing-hoodie-002",
+      "name": "Innovation Tech Sweatshirt",
+      "description": "Stay warm and stylish with our futuristic tech hoodie. Perfect for innovators on the go.",
+      "price": 44.99,
+      "images": ["assets/images/clothing-hoodie-01.png", "assets/images/clothing-hoodie-02.png"],
+      "category": "Clothing",
+      "subcategory": "Hoodies",
+      "popularity": 3.9,
+      "brand": "Innovation Retail Apparel",
+      "sizes": ["S", "M", "L", "XL", "XXL"],
+      "colors": ["Black", "Space Grey", "Deep Gold"]
+    },
     {
       "id": "clothing-tshirt-002",
       "name": "Quantum Core T-Shirt",
@@ -108,7 +108,7 @@
       "subcategory": "Pants",
       "popularity": 4.4,
       "brand": "Innovation Retail Apparel",
-      "sizes": ["30", "32", "34", "36", "38"],
+      "sizes": ["30", "32", "34", "36", "38"], 
       "colors": ["Charcoal", "Obsidian Black", "Desert Sand"]
     }
   ]

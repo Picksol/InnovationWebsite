@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop All - Innovation Retail</title>
-    <meta name="description" content="Explore the full range of innovative products at Innovation Retail. Shop Clothing, Electronics, Health Care, and more.">
+    <!-- ... head content (same as before) ... -->
+    <title>Shop All - Innovation Retail: 3D Spatial Hub</title> <!-- Updated title -->
+    <meta name="description" content="Explore Innovation Retail's product universe in a stunning 3D Spatial Hub. A revolutionary online shopping experience."> <!-- Updated description -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/store.css">
@@ -12,10 +11,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> <!-- Include Three.js library -->
+    <script src="https://unpkg.com/three@0.127.0/examples/js/controls/OrbitControls.js"></script> <!-- Add OrbitControls module -->
 </head>
 <body>
     <header>
-        <!-- Fluid Navbar -->
+        <!-- Fluid Navbar (same as before) -->
         <nav class="fluid-navbar">
             <div class="nav-brand">
                 <a href="index.html"><span class="gradient-text">Innovation</span> Retail</a>
@@ -29,76 +30,35 @@
                 <a href="signup.html" class="holographic-btn">Join Loyalty</a>
             </div>
         </nav>
-
-        <!-- Secondary Navbar - Search Only for now -->
-        <nav class="secondary-navbar">
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search products...">
-                <button class="search-button">Search</button>
-            </div>
-        </nav>
     </header>
 
-    <main class="store-page-main">
-        <!-- Filters Sidebar - Initially Hidden -->
-        <aside class="filters-sidebar" style="display: none;">  <!-- Initially hidden -->
-            <div class="filter-section">
-                <h3>Category</h3>
-                <ul class="filter-categories">
-                    <!-- Will be dynamically populated if needed -->
-                </ul>
-            </div>
-
-            <div class="filter-section">
-                <h3>Sub-Category</h3>
-                <ul class="filter-subcategories">
-                    <!-- Will be dynamically populated -->
-                </ul>
-            </div>
-
-            <div class="filter-section">
-                <h3>Price Range</h3>
-                <div class="price-range-filter">
-                    <div class="price-inputs">
-                        <label for="min-price">Min:</label>
-                        <input type="number" id="min-price" class="min-price-input" placeholder="Min" value="0">
-                        <label for="max-price">Max:</label>
-                        <input type="number" id="max-price" class="max-price-input" placeholder="Max" value="1000">
-                    </div>
-                    <div class="price-slider-container">
-                        <input type="range" class="price-slider" min="0" max="1000" value="0" id="price-slider-min">
-                        <input type="range" class="price-slider" min="0" max="1000" value="1000" id="price-slider-max">
-                    </div>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <h3>Sort By</h3>
-                <ul class="sort-options">
-                    <li><a href="#">Popularity</a></li>
-                    <li><a href="#">Price (Low to High)</a></li>
-                    <li><a href="#">Price (High to Low)</a></li>
-                    <li><a href="#">New Arrivals</a></li>
-                </ul>
-            </div>
+    <main class="store-page-main spatial-hub-page">
+        <!-- Filters Sidebar (keep hidden for now) -->
+        <aside class="filters-sidebar" style="display: none;">
+            <!-- ... filters content ... -->
         </aside>
 
-        <!-- Category Content Area - Now for Main Categories and then Subcategories -->
-        <section id="category-content-area" class="category-content-area">
-            <!-- Content will be dynamically loaded here by JS -->
-            <h2>Choose a Category to Begin</h2> <!-- Updated initial message -->
+        <!-- 3D Spatial Hub Container -->
+        <section id="spatial-hub-container" class="spatial-hub-container">
+            <h2>Explore the Innovation Hub in 3D</h2> <!-- Updated title -->
+            <p class="hub-description">Navigate through a 3D representation of our product categories. Click and drag to explore, click nodes to enter.</p>
+            <div id="hub-3d-canvas-container"> <!-- Container for the 3D canvas -->
+                <canvas id="hub-3d-canvas"></canvas> <!-- The canvas for Three.js -->
+            </div>
+            <!-- We can keep the old hub-nodes-container for now, or remove it. Let's remove it for clarity as we're moving to 3D -->
+            <!-- <div class="hub-nodes-container"> -->
+            <!-- ... (old 2D nodes) ... -->
+            <!-- </div> -->
         </section>
 
-        <!-- Product Listing Area - Initially Hidden -->
-        <section id="product-listing-area" class="product-listing-area" style="display: none;"> <!-- Initially hidden -->
-            <h2>Products</h2> <!-- Placeholder -->
-            <div class="product-grid products-list-view">
-                <!-- Product cards will be loaded here -->
-            </div>
-        </section>
+        <!-- Category space placeholder (same as before) -->
+        <section id="category-space-placeholder" class="category-space-placeholder" style="display: none;">
+            </section>
+
     </main>
 
     <footer>
+        <!-- Footer (same as before) -->
         <div class="footer-content">
             <p>© 2023 Innovation Retail. All rights reserved.</p>
             <nav class="footer-nav">
