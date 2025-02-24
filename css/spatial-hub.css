@@ -1,0 +1,175 @@
+/* ==================================================
+Spatial Hub Section Styles
+================================================== */
+.spatial-hub-page {
+    background: var(--secondary-black); /* Dark background for the whole page */
+    overflow: hidden; /* To contain any potential 3D or animated layouts within */
+}
+
+.spatial-hub-section {
+    padding: 6rem 5%; /* Padding around the hub area */
+    min-height: calc(100vh - 150px); /* Adjust height to fit viewport minus header/footer roughly */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For positioning the hub container */
+}
+
+.hub-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow nodes to wrap on smaller screens */
+    justify-content: center; /* Center nodes horizontally */
+    max-width: 1200px; /* Limit hub width for larger screens */
+    width: 95%; /* Take up most of the width on smaller screens */
+    position: relative; /* For potential 3D layering or positioning */
+    gap: 2.5rem; /* Spacing between nodes */
+    padding: 2rem;
+}
+
+/* ==================================================
+Category Node Styles
+================================================== */
+.category-node {
+    background-color: var(--primary-black);
+    border-radius: var(--border-radius-medium); /* Rounded corners for nodes */
+    box-shadow: var(--box-shadow-medium);
+    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
+    width: 280px; /* Fixed width for nodes */
+    height: 320px; /* Fixed height for nodes */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer; /* Indicate interactivity */
+    position: relative; /* For product glimpse positioning */
+    overflow: hidden; /* Clip content within rounded corners */
+}
+
+.category-node:hover {
+    transform: translateY(-8px); /* Lift effect on hover */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.5); /* Stronger shadow on hover */
+}
+
+.node-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Take up full node height */
+}
+
+.category-node h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+    text-shadow: 0 0 5px var(--accent-gold); /* Subtle text shadow for depth */
+}
+
+/* Product Glimpse Area (Placeholder Styling) */
+.product-glimpse {
+    width: 100%;
+    height: 160px; /* Fixed height for glimpse area */
+    background-color: rgba(255, 255, 255, 0.05); /* Very subtle background */
+    border-radius: var(--border-radius-small);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    opacity: 0.8; /* Slightly faded */
+    transition: background-color 0.3s var(--transition-ease); /* Smooth transition for background */
+}
+
+.category-node:hover .product-glimpse {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly brighter background on hover */
+}
+
+.product-glimpse::before {
+    content: "Product Glimpse"; /* Placeholder text */
+}
+
+
+/* ==================================================
+Category Space Section Styles (Basic)
+================================================== */
+.category-space-section {
+    padding: 4rem 5%;
+    background-color: var(--secondary-black);
+    min-height: calc(100vh - 150px); /* Match hub section height roughly */
+}
+
+.category-space-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#category-space-title {
+    font-size: 2.2rem;
+    color: var(--text-white);
+}
+
+/* ==================================================
+Category Node Styles (Updated Hover & Glimpse)
+================================================== */
+.category-node {
+    /* ... (previous styles - keep all of them) ... */
+    transition: transform 0.4s var(--transition-ease), box-shadow 0.4s var(--transition-ease), background-color 0.3s var(--transition-ease); /* Added background-color transition */
+}
+
+.category-node:hover {
+    transform: translateY(-10px) scale(1.03); /* Slightly scale up on hover */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6); /* Stronger shadow on hover */
+    background-color: var(--secondary-black); /* Slightly darker node background on hover */
+}
+
+.category-node:hover .node-content h3 {
+    color: var(--deep-gold); /* Title color change on hover */
+    text-shadow: 0 0 8px var(--deep-gold), 0 0 12px var(--accent-gold); /* Enhanced text shadow */
+}
+
+
+/* Product Glimpse Area - Thumbnail Grid */
+.product-glimpse {
+    /* ... (previous styles - keep existing styles like background-color, border-radius, margin-bottom, etc.) ... */
+    background-size: cover; /* Keep background image cover */
+    background-position: center;
+    display: grid; /* Use grid layout for thumbnails */
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr)); /* Responsive thumbnail grid */
+    gap: 0.5rem; /* Spacing between thumbnails */
+    padding: 0.5rem; /* Inner padding for thumbnails */
+    overflow: hidden; /* Clip thumbnails within glimpse area */
+    align-items: center; /* Center thumbnails vertically */
+    justify-content: center; /* Center thumbnails horizontally */
+    transition: height 0.4s var(--transition-ease); /* Transition for height animation */
+    height: 160px; /* Default height */
+}
+
+.category-node:hover .product-glimpse {
+    height: 180px; /* Slightly expand glimpse area on hover */
+}
+
+
+.product-glimpse img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover grid cell, crop if needed */
+    border-radius: var(--border-radius-small); /* Rounded thumbnails */
+    box-shadow: var(--box-shadow-light); /* Subtle shadow for thumbnails */
+    transition: transform 0.3s var(--transition-ease); /* Thumbnail hover effect */
+}
+
+.product-glimpse img:hover {
+    transform: scale(1.1); /* Slightly scale up thumbnails on hover */
+}
+
+.product-glimpse p { /* Style for "No products" or error message */
+    color: var(--text-grey);
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 0;
+}

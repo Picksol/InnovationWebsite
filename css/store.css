@@ -1,122 +1,16 @@
-/* store.css - Updated Product Card Styles for Mockup 2A */
+/* store.css - Updated Product Card Styles for Mockup 2A + Navbar Fix */
 
 /* ==================================================
-    Spatial Hub Styles
-   ================================================== */
-   .spatial-hub-page .store-page-main { /* Target main on store page with spatial-hub-page class */
-    padding: 4rem 5%; /* Adjust main padding for hub page */
-}
-
-.spatial-hub-container {
-    text-align: center;
-    padding: 3rem 0; /* Padding within the container */
-}
-
-.spatial-hub-container h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.hub-description {
-    color: var(--text-grey);
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
-}
-
-.hub-nodes-container {
-    display: flex; /* Use flexbox for dynamic 2D layout */
-    flex-wrap: wrap; /* Allow nodes to wrap to the next line on smaller screens */
-    justify-content: center; /* Center nodes horizontally */
-    gap: 3rem; /* Spacing between nodes */
-    padding: 2rem; /* Add padding around the nodes container */
-}
-
-.hub-node {
-    background-color: var(--secondary-black);
-    border-radius: var(--border-radius-medium);
-    overflow: hidden;
-    box-shadow: var(--box-shadow-medium);
-    transition: transform 0.3s var(--transition-ease), box-shadow 0.3s var(--transition-ease);
-    width: 280px; /* Adjust node width as needed */
-    cursor: pointer; /* Indicate interactivity */
-    position: relative; /* For overlay positioning */
-}
-
-.hub-node:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.5); /* Stronger shadow on hover */
-}
-
-.node-visual {
-    position: relative; /* For overlay positioning */
-}
-
-.node-visual img {
-    display: block;
-    width: 100%;
-    height: 220px; /* Adjust image height for nodes */
-    object-fit: cover;
-}
-
-.node-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 215, 0, 0.2); /* Gold overlay */
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s var(--transition-ease);
-}
-
-.hub-node:hover .node-overlay {
-    opacity: 1; /* Show overlay on hover */
-}
-
-.node-title {
-    padding: 1.5rem;
-    font-size: 1.3rem;
-    text-align: center;
-    color: var(--text-white);
-    margin-bottom: 0; /* Remove default margin */
-}
-
-/* ==================================================
-    3D Spatial Hub Styles (Responsive)
-   ================================================== */
-   #hub-3d-canvas-container {
-    width: 100%; /* Take full width of parent */
-    height: 600px; /* Default height for larger screens */
-    max-height: 80vh; /* Limit height to 80% of viewport height on larger screens if needed */
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 2rem; /* Add some margin below the canvas */
-}
-
-#hub-3d-canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-
-/* --- Media Query for smaller screens (e.g., tablets and phones) --- */
-@media (max-width: 768px) { /* Adjust breakpoint as needed */
-    #hub-3d-canvas-container {
-        height: 400px; /* Reduced height on smaller screens */
-        max-height: 90vh; /* Allow to take more viewport height on smaller screens if needed */
-    }
-}
-
-/* ==================================================
-    Product Listing Area and Product Grid (List View) - UPDATED Product Cards for Mockup 2A
-   ================================================== */
-   .product-listing-area {
+Product Listing Area and Product Grid (List View) - UPDATED Product Cards for Mockup 2A
+================================================== */
+.product-listing-area {
     display: block !important;
     padding: 2rem 5%; /* Increased padding for product listing area */
     background-color: var(--secondary-black);
     border-radius: var(--border-radius-medium);
     box-shadow: var(--box-shadow-medium);
+    position: relative; /* Add relative positioning for z-index context */
+    z-index: 1; /* Ensure product listing is above potential background elements */
 }
 
 .product-listing-area .product-listing-header {
@@ -124,8 +18,9 @@
     justify-content: space-between; /* Space out back button and heading */
     align-items: center;
     margin-bottom: 2rem; /* Spacing below header */
+    position: relative; /* Ensure header content is positioned correctly */
+    z-index: 2; /* Ensure header content is above product cards if needed */
 }
-
 
 .product-listing-area h2 {
     font-size: 2rem; /* Slightly larger heading */
@@ -159,6 +54,7 @@
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    z-index: 10; /* Bring hovered card to front */
 }
 
 /* --- Product Card Image --- */
@@ -190,7 +86,6 @@
     opacity: 1; /* Show overlay on hover */
 }
 
-
 /* --- Product Card Title --- */
 .product-card-title-strip {
     background-color: var(--secondary-black);
@@ -207,7 +102,6 @@
     text-overflow: ellipsis; /* Ellipsis for overflow text */
 }
 
-
 /* --- Product Card Info Panel (Hidden by Default) --- */
 .product-card-info-panel {
     position: absolute;
@@ -217,9 +111,10 @@
     background-color: var(--secondary-black);
     padding: 1.5rem;
     transform: translateY(100%); /* Initially slide panel out of view */
-    transition: transform 0.3s var(--transition-ease), opacity 0.3s var(--transition-ease);
+    transition: transform 0.4s var(--transition-ease), opacity 0.4s var(--transition-ease); /* Slightly slower transition */
     opacity: 0; /* Initially hidden */
     pointer-events: none; /* Ensure panel doesn't interfere with hover on card */
+    border-top: 2px solid var(--accent-gold); /* Add a top border to separate panel */
 }
 
 .product-card:hover .product-card-info-panel {
@@ -228,22 +123,20 @@
     pointer-events: auto; /* Make panel interactive on hover */
 }
 
-
 .product-card .product-description {
     color: var(--text-grey);
     font-size: 0.9rem;
     margin-bottom: 1rem;
     line-height: 1.4;
     opacity: 0; /* Initially hidden */
-    transform: translateY(10px); /* Slight initial offset */
-    transition: opacity 0.3s 0.1s var(--transition-ease), transform 0.3s 0.1s var(--transition-ease); /* Delayed animation */
+    transform: translateY(15px); /* Increased initial offset */
+    transition: opacity 0.4s 0.1s var(--transition-ease), transform 0.4s 0.1s var(--transition-ease); /* Slightly slower, delayed animation */
 }
 
 .product-card:hover .product-description {
     opacity: 1; /* Fade in description on hover */
     transform: translateY(0); /* Slide description into view on hover */
 }
-
 
 .product-card .product-price {
     font-weight: 500;
@@ -252,8 +145,8 @@
     font-size: 1.2rem; /* Slightly larger price */
     text-align: left; /* Align price to the left within info panel */
     opacity: 0; /* Initially hidden */
-    transform: translateY(10px); /* Slight initial offset */
-    transition: opacity 0.3s 0.2s var(--transition-ease), transform 0.3s 0.2s var(--transition-ease); /* Further delayed animation */
+    transform: translateY(15px); /* Increased initial offset */
+    transition: opacity 0.4s 0.2s var(--transition-ease), transform 0.4s 0.2s var(--transition-ease); /* Slightly slower, further delayed animation */
 }
 
 .product-card:hover .product-price {
@@ -261,15 +154,14 @@
     transform: translateY(0); /* Slide price into view on hover */
 }
 
-
 .product-card .quantum-btn.small-btn {
     display: inline-block; /* Make button inline-block within info panel */
     width: auto; /* Auto width to fit content */
     padding: 0.6rem 1.5rem; /* Adjusted button padding */
     margin: 0; /* Reset margins */
     opacity: 0; /* Initially hidden */
-    transform: translateY(10px); /* Slight initial offset */
-    transition: opacity 0.3s 0.3s var(--transition-ease), transform 0.3s 0.3s var(--transition-ease); /* Even further delayed animation */
+    transform: translateY(15px); /* Increased initial offset */
+    transition: opacity 0.4s 0.3s var(--transition-ease), transform 0.4s 0.3s var(--transition-ease); /* Slightly slower, even further delayed animation */
 }
 
 .product-card:hover .quantum-btn.small-btn {
@@ -300,4 +192,24 @@
 
 .product-card:hover .product-card-data-overlay {
     opacity: 1; /* Show data overlay on hover */
+}
+
+/* ==================================================
+Navbar Fix - Ensure secondary navbar and content are below main navbar
+================================================== */
+.secondary-navbar {
+    position: relative; /* Create stacking context */
+    z-index: 2; /* Ensure secondary navbar is above main navbar */
+}
+
+.store-page-main {
+    position: relative; /* Create stacking context for main content */
+    margin-top: 80px; /* Adjust top margin to be below fixed main navbar height (adjust if navbar height changes) */
+    z-index: 1; /* Ensure main content is below secondary navbar but above base page */
+}
+
+.spatial-hub-page main.spatial-hub-page,
+.store-page-main main.store-page-main,
+.category-space-section {
+    margin-top: 80px; /* Apply the same top margin to spatial hub and category space pages */
 }

@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ... head content (same as before) ... -->
-    <title>Shop All - Innovation Retail: 3D Spatial Hub</title> <!-- Updated title -->
-    <meta name="description" content="Explore Innovation Retail's product universe in a stunning 3D Spatial Hub. A revolutionary online shopping experience."> <!-- Updated description -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All - Innovation Retail - Spatial Hub</title>
+    <meta name="description" content="Explore Innovation Retail's Spatial Hub. Discover categories in an interactive and innovative way.">
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/store.css">
+    <link rel="stylesheet" href="css/spatial-hub.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> <!-- Include Three.js library -->
-    <script src="https://unpkg.com/three@0.127.0/examples/js/controls/OrbitControls.js"></script> <!-- Add OrbitControls module -->
 </head>
 <body>
     <header>
-        <!-- Fluid Navbar (same as before) -->
+        <!-- Fluid Navbar - Keeping the same navbar -->
         <nav class="fluid-navbar">
             <div class="nav-brand">
                 <a href="index.html"><span class="gradient-text">Innovation</span> Retail</a>
@@ -32,33 +31,26 @@
         </nav>
     </header>
 
-    <main class="store-page-main spatial-hub-page">
-        <!-- Filters Sidebar (keep hidden for now) -->
-        <aside class="filters-sidebar" style="display: none;">
-            <!-- ... filters content ... -->
-        </aside>
-
-        <!-- 3D Spatial Hub Container -->
-        <section id="spatial-hub-container" class="spatial-hub-container">
-            <h2>Explore the Innovation Hub in 3D</h2> <!-- Updated title -->
-            <p class="hub-description">Navigate through a 3D representation of our product categories. Click and drag to explore, click nodes to enter.</p>
-            <div id="hub-3d-canvas-container"> <!-- Container for the 3D canvas -->
-                <canvas id="hub-3d-canvas"></canvas> <!-- The canvas for Three.js -->
+    <main class="spatial-hub-page">
+        <section id="spatial-hub" class="spatial-hub-section">
+            <div class="hub-container">
+                <!-- Category Nodes will be dynamically placed here by JavaScript -->
             </div>
-            <!-- We can keep the old hub-nodes-container for now, or remove it. Let's remove it for clarity as we're moving to 3D -->
-            <!-- <div class="hub-nodes-container"> -->
-            <!-- ... (old 2D nodes) ... -->
-            <!-- </div> -->
         </section>
 
-        <!-- Category space placeholder (same as before) -->
-        <section id="category-space-placeholder" class="category-space-placeholder" style="display: none;">
-            </section>
-
+        <!-- Category Space - Initially Hidden (No changes here) -->
+        <section id="category-space" class="category-space-section" style="display: none;">
+            <div class="category-space-header">
+                <button class="holographic-btn back-to-hub-btn">Back to Hub</button>
+                <h2 id="category-space-title">Category Title</h2>
+            </div>
+            <div id="category-product-grid" class="product-grid products-list-view">
+                <!-- Product cards for the selected category will load here -->
+            </div>
+        </section>
     </main>
 
     <footer>
-        <!-- Footer (same as before) -->
         <div class="footer-content">
             <p>© 2023 Innovation Retail. All rights reserved.</p>
             <nav class="footer-nav">
@@ -70,6 +62,6 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/store.js"></script>
+    <script src="js/spatial-hub.js"></script>
 </body>
 </html>
